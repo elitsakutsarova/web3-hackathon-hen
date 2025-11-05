@@ -1,5 +1,5 @@
 ---
-
+const { team } = Astro.props;
 ---
 
 <article>
@@ -7,16 +7,16 @@
     <div class="profilepic">
       <img
         alt=""
-        src={##PIC##}
+        src={team.data.pic.src}
         width={300}
         height={300}
-        alt={`Profile pic of ${##NAME##}`}
+        alt={`Profile pic of ${team.data.name}`}
       />
     </div>
   </div>
-  <p class="name"><a href={`/team/${##ID##}`}>{##NAME##}</a></p>
-  <p class="function">{##FUNCTION##}</p>
-  <p class="bio">{##BIO##}</p>
+  <p class="name"><a href={`/team/${team.id}`}>{team.data.name}</a></p>
+  <p class="function">{team.data.function}</p>
+  <p class="bio">{team.data.bio}</p>
 </article>
 
 <style>

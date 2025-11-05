@@ -1,5 +1,8 @@
 ---
+import { getCollection } from "astro:content";
+const team = await getCollection("team");
 
+import TeamCard from "../components/TeamCard.astro";
 ---
 
 <svg
@@ -30,15 +33,19 @@
     <p>Check these superheroes</p>
   </header>
   <ul>
-    <li>##TEAM MEMBER##</li>
+    {
+      team.map((team) => (
+        <li>
+          <TeamCard team={team} />
+        </li>
+      ))
+    }
   </ul>
 </section>
 
 <style>
-  ul {
-    display: grid;
-    gap: var(--sp-l);
-    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
-    margin-bottom: var(--sp-xl);
+  a {
+    display: block;
+    margin-bottom: var(--sp-m);
   }
 </style>
